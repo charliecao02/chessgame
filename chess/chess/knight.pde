@@ -1,6 +1,0 @@
-class Knight extends Pieces{
-  
-  
-  
-  
-}
