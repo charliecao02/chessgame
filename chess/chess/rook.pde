@@ -1,6 +1,0 @@
-class Rook extends Pieces{
-  
-  
-  
-  
-}
