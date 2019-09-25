@@ -3,7 +3,8 @@ color black=#202020;
 color white=#F0F0F0;
 color gold=color(255, 215, 0);
 int scale=75;
-int clickrow, clickcol;
+int clickrow, clickcol, selectedtype;
+boolean selected=false;
 
 int[][] grid = {
   //0=empty, 1=red, 2=black
@@ -52,8 +53,6 @@ void setup() {
         fill(gold);
         rect(ix*scale, iy*scale, scale, scale);
       }
-      
-      //SPAWN PIECES HERE<--------------------
     }
   }
 
@@ -73,6 +72,23 @@ void setup() {
 }
 
 void draw() {
+  for (int iy=0; iy<8; iy++) {
+    for (int ix=0; ix<8; ix++) {
+      if (grid[iy][ix]==1) image(w_pawn, (ix+0.5)*scale, (iy+0.5)*scale);
+      if (grid[iy][ix]==2) image(w_rook, (ix+0.5)*scale, (iy+0.5)*scale);
+      if (grid[iy][ix]==3) image(w_knight, (ix+0.5)*scale, (iy+0.5)*scale);
+      if (grid[iy][ix]==4) image(w_bishop, (ix+0.5)*scale, (iy+0.5)*scale);
+      if (grid[iy][ix]==5) image(w_queen, (ix+0.5)*scale, (iy+0.5)*scale);
+      if (grid[iy][ix]==6) image(w_king, (ix+0.5)*scale, (iy+0.5)*scale);
+      if (grid[iy][ix]==7) image(b_pawn, (ix+0.5)*scale, (iy+0.5)*scale);
+      if (grid[iy][ix]==8) image(b_rook, (ix+0.5)*scale, (iy+0.5)*scale);
+      if (grid[iy][ix]==9) image(b_knight, (ix+0.5)*scale, (iy+0.5)*scale);
+      if (grid[iy][ix]==10) image(b_bishop, (ix+0.5)*scale, (iy+0.5)*scale);
+      if (grid[iy][ix]==11) image(b_queen, (ix+0.5)*scale, (iy+0.5)*scale);
+      if (grid[iy][ix]==12) image(b_king, (ix+0.5)*scale, (iy+0.5)*scale);
+    }
+  }
+  
   for (int a=0; a<pieces.size(); a++) {
     Pieces currentPiece= pieces.get(a);
     currentPiece.show();
