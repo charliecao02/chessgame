@@ -1,0 +1,6 @@
+class Bishop extends Pieces{
+  
+  
+  
+  
+}
