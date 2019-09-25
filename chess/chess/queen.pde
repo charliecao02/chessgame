@@ -1,6 +1,0 @@
-class Queen extends Pieces{
-  
-  
-  
-  
-}
