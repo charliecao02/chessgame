@@ -17,6 +17,6 @@ class Pawn extends Pieces {
   }
 
   void act() {
-    if(selected==true && (selectedtype==1 || selectedtype==7))//move code
+    if(selected==true && (selectedtype==1 || selectedtype==7)) gridcolor[clickrow][clickcol]=2;//move code
   }
 }

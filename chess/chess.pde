@@ -4,10 +4,11 @@ color white=#F0F0F0;
 color gold=color(255, 215, 0);
 int scale=75;
 int clickrow, clickcol, selectedtype;
+int prevclickrow, prevclickcol;
 boolean selected=false;
 
 int[][] grid = {
-  //0=empty, 1=red, 2=black
+  //0=empty
   {8, 9, 10, 11, 12, 10, 9, 8}, 
   {7, 7, 7, 7, 7, 7, 7, 7}, 
   {0, 0, 0, 0, 0, 0, 0, 0}, 
@@ -19,7 +20,7 @@ int[][] grid = {
 };
 
 int[][] gridcolor = {
-  //0=white, 1=black
+  //0=white, 1=black, 2=gold
   {0, 1, 0, 1, 0, 1, 0, 1}, 
   {1, 0, 1, 0, 1, 0, 1, 0}, 
   {0, 1, 0, 1, 0, 1, 0, 1}, 
@@ -55,6 +56,23 @@ void setup() {
       }
     }
   }
+  
+  for (int iy=0; iy<8; iy++) {
+    for (int ix=0; ix<8; ix++) {
+      if (grid[iy][ix]==1) pieces.add(new Pawn(ix,iy,0));
+      if (grid[iy][ix]==2) pieces.add(new Rook(ix,iy,0));
+      if (grid[iy][ix]==3) pieces.add(new Knight(ix,iy,0));
+      if (grid[iy][ix]==4) pieces.add(new Bishop(ix,iy,0));
+      if (grid[iy][ix]==5) pieces.add(new Queen(ix,iy,0));
+      if (grid[iy][ix]==6) pieces.add(new King(ix,iy,0));
+      if (grid[iy][ix]==7) pieces.add(new Pawn(ix,iy,1));
+      if (grid[iy][ix]==8) pieces.add(new Rook(ix,iy,1));
+      if (grid[iy][ix]==9) pieces.add(new Knight(ix,iy,1));
+      if (grid[iy][ix]==10) pieces.add(new Bishop(ix,iy,1));
+      if (grid[iy][ix]==11) pieces.add(new Queen(ix,iy,1));
+      if (grid[iy][ix]==12) pieces.add(new King(ix,iy,1));
+    }
+  }
 
   w_pawn=loadImage("w_pawn.png");//1
   w_rook=loadImage("w_rook.png");//2
@@ -74,21 +92,21 @@ void setup() {
 void draw() {
   for (int iy=0; iy<8; iy++) {
     for (int ix=0; ix<8; ix++) {
-      if (grid[iy][ix]==1) image(w_pawn, (ix+0.5)*scale, (iy+0.5)*scale);
-      if (grid[iy][ix]==2) image(w_rook, (ix+0.5)*scale, (iy+0.5)*scale);
-      if (grid[iy][ix]==3) image(w_knight, (ix+0.5)*scale, (iy+0.5)*scale);
-      if (grid[iy][ix]==4) image(w_bishop, (ix+0.5)*scale, (iy+0.5)*scale);
-      if (grid[iy][ix]==5) image(w_queen, (ix+0.5)*scale, (iy+0.5)*scale);
-      if (grid[iy][ix]==6) image(w_king, (ix+0.5)*scale, (iy+0.5)*scale);
-      if (grid[iy][ix]==7) image(b_pawn, (ix+0.5)*scale, (iy+0.5)*scale);
-      if (grid[iy][ix]==8) image(b_rook, (ix+0.5)*scale, (iy+0.5)*scale);
-      if (grid[iy][ix]==9) image(b_knight, (ix+0.5)*scale, (iy+0.5)*scale);
-      if (grid[iy][ix]==10) image(b_bishop, (ix+0.5)*scale, (iy+0.5)*scale);
-      if (grid[iy][ix]==11) image(b_queen, (ix+0.5)*scale, (iy+0.5)*scale);
-      if (grid[iy][ix]==12) image(b_king, (ix+0.5)*scale, (iy+0.5)*scale);
+      if (gridcolor[iy][ix]==0) {
+        fill(white);
+        rect(ix*scale, iy*scale, scale, scale);
+      }
+      if (gridcolor[iy][ix]==1) {
+        fill(black);
+        rect(ix*scale, iy*scale, scale, scale);
+      }
+      if (gridcolor[iy][ix]==2) {
+        fill(gold);
+        rect(ix*scale, iy*scale, scale, scale);
+      }
     }
   }
-  
+
   for (int a=0; a<pieces.size(); a++) {
     Pieces currentPiece= pieces.get(a);
     currentPiece.show();
