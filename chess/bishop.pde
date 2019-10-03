@@ -15,6 +15,9 @@ class Bishop extends Pieces{
   }
 
   void act() {
-    if(selected==true && (selectedtype==4 || selectedtype==10)) gridcolor[clickrow][clickcol]=2;//move code
+    if (selected==true && (selectedtype==4 || selectedtype==10)) {
+      gridcolor[clickrow][clickcol]=2;
+    }
+    if (selected==false && (selectedtype==4 || selectedtype==10)) gridcolor[clickrow][clickcol]=prevcolor;
   }
 }

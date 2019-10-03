@@ -15,6 +15,9 @@ class Rook extends Pieces{
   }
 
   void act() {
-    if(selected==true && (selectedtype==2 || selectedtype==8)) gridcolor[clickrow][clickcol]=2;//move code
+    if (selected==true && (selectedtype==2 || selectedtype==8)) {
+      gridcolor[clickrow][clickcol]=2;
+    }
+    if (selected==false && (selectedtype==2 || selectedtype==8)) gridcolor[clickrow][clickcol]=prevcolor;
   }
 }

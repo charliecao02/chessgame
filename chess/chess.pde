@@ -6,6 +6,7 @@ int scale=75;
 int clickrow, clickcol, selectedtype;
 int prevclickrow, prevclickcol;
 boolean selected=false;
+int prevcolor;
 
 int[][] grid = {
   //0=empty

@@ -15,6 +15,9 @@ class Queen extends Pieces{
   }
 
   void act() {
-    if(selected==true && (selectedtype==5 || selectedtype==11)) gridcolor[clickrow][clickcol]=2;//move code
+    if (selected==true && (selectedtype==5 || selectedtype==11)) {
+      gridcolor[clickrow][clickcol]=2;
+    }
+    if (selected==false && (selectedtype==5 || selectedtype==11)) gridcolor[clickrow][clickcol]=prevcolor;
   }
 }

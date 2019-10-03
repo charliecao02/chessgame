@@ -1,16 +1,12 @@
-abstract class Pieces{
+abstract class Pieces {
   PVector location;
   int side;
-  int prevcolor;
-  Pieces(){
-    
+  Pieces() {
   }
-  
-  void show(){
-    
+
+  void show() {
   }
-  
-  void act(){
-    
+
+  void act() {
   }
 }
